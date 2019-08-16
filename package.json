@@ -1,5 +1,5 @@
 {
-  "name": "link-scraper",
+  "name": "newsletter-link-scraper",
   "version": "0.1.0",
   "description": "Scrape links, with context, from an HTML document.",
   "main": "index.js",
