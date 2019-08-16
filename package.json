@@ -1,0 +1,26 @@
+{
+  "name": "link-scraper",
+  "version": "0.1.0",
+  "description": "Scrape links, with context, from an HTML document.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scraping",
+    "HTML",
+    "link"
+  ],
+  "author": "Geoff Hing <geoffhing@gmail.com>",
+  "license": "ISC",
+  "bin": {
+    "scrapelinks": "src/cli.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "yargs": "^13.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0"
+  }
+}
