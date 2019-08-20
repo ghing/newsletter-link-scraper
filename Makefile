@@ -10,12 +10,15 @@ NEWSLETTER_LINK_FILES = $(addprefix $(DATA_DIR_TMP)/newsletter_links/, \
 	$(addsuffix .ndjson, $(basename $(notdir $(NEWSLETTER_HTML_FILES))))\
 )
 
-.PHONY: all
+.PHONY: all clean
 
 all: $(DATA_DIR_OUT)/newsletter_links.csv
 
+clean:
+	rm -rf $(DATA_DIR_OUT) $(DATA_DIR_TMP)
+
 $(DATA_DIR_OUT)/newsletter_links.csv: $(DATA_DIR_TMP)/newsletter_links.ndjson | $(DATA_DIR_OUT)
-	in2csv -f ndjson $< > $@
+	in2csv --encoding utf8 -f ndjson $< > $@
 
 $(DATA_DIR_TMP)/newsletter_links.ndjson: $(NEWSLETTER_LINK_FILES)
 	cat $^ > $@

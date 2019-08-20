@@ -54,7 +54,18 @@ function getContext($, link) {
  * Get preceding heading of link.
  */
 function getHeading($, link) {
-  return $(link).prevAll('h1,h2,h3,h4,h5').first().text();
+  let $el = $(link);
+  let $prevHeading = $el.prevAll('h1,h2,h3,h4,h5').first();
+
+  // If there isn't a previous heading, the link might be nested below
+  // other elements. Go up a level and look for a preceding heading
+  // until we reach the top level.
+  while ($prevHeading.length == 0 && $el.get(0).tagName != 'body') {
+    $el = $el.parent();
+    $prevHeading = $el.prevAll('h1,h2,h3,h4,h5').first();
+  }
+
+  return $prevHeading.text().trim();
 }
 
 /**
